@@ -17,6 +17,10 @@ $open-lock-img: url(../img/open-lock.svg);
 
 .wrapper {
 	position: relative;
+	-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
 
 	img {
 		height: 100%;
@@ -24,6 +28,11 @@ $open-lock-img: url(../img/open-lock.svg);
 		object-fit: cover;
 		position: absolute;
 	}
+}
+
+.wrapper:hover {
+	cursor: pointer;
+	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
 }
 
 .card-container {
@@ -37,10 +46,10 @@ $open-lock-img: url(../img/open-lock.svg);
 	align-items: flex-end;
 }
 
-.card-container:hover {
-	cursor: pointer;
-	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
-}
+// .card-container:hover {
+// 	cursor: pointer;
+// 	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+// }
 
 .card-container.locked {
 	.lock-image {
