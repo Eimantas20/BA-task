@@ -1,9 +1,12 @@
 $lock-img: url(../img/lock.svg);
 $open-lock-img: url(../img/open-lock.svg);
+$clickToLock: 'Click to lock';
+$clickToUnlock: 'Click to unlock';
 
 @mixin lock-image($img){
 	background-image: $img;
 	background-repeat: no-repeat;
+	position: absolute;
 	width: 13px;
 	height: 18px;
 }
@@ -13,6 +16,7 @@ $open-lock-img: url(../img/open-lock.svg);
 	position: absolute;
 	color: #fff;
 	left: 30px;
+	width: max-content;
 }
 
 .wrapper {
@@ -30,11 +34,6 @@ $open-lock-img: url(../img/open-lock.svg);
 	}
 }
 
-.wrapper:hover {
-	cursor: pointer;
-	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
-}
-
 .card-container {
 	height:260px;
 	padding: 10px;
@@ -46,10 +45,12 @@ $open-lock-img: url(../img/open-lock.svg);
 	align-items: flex-end;
 }
 
-// .card-container:hover {
-// 	cursor: pointer;
-// 	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
-// }
+.card-container:hover {
+	cursor: pointer;
+	-webkit-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+	-moz-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+}
 
 .card-container.locked {
 	.lock-image {
@@ -63,7 +64,7 @@ $open-lock-img: url(../img/open-lock.svg);
 	}
 
 	::after {
-		@include lock-content('Click to unlock');
+		@include lock-content($clickToUnlock);
 	}
 }
 
@@ -73,7 +74,7 @@ $open-lock-img: url(../img/open-lock.svg);
 	}
 
 	::after {
-		@include lock-content('Click to lock');
+		@include lock-content($clickToLock);
 	}
 }
 
@@ -84,7 +85,7 @@ $open-lock-img: url(../img/open-lock.svg);
 		}
 
 		::after {
-			@include lock-content('Click to lock');
+			@include lock-content($clickToLock);
 		}
 	}
 
@@ -94,7 +95,7 @@ $open-lock-img: url(../img/open-lock.svg);
 		}
 
 		::after {
-			@include lock-content('Click to unlock');
+			@include lock-content($clickToUnlock);
 		}
 	}
 }

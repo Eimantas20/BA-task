@@ -1,5 +1,9 @@
 ## Available Scripts
 
+You may view the project online by clicking on the link [https://eimantas20.github.io/BA-task/](https://eimantas20.github.io/BA-task/).
+
+## Available Scripts
+
 In the project directory, you can run:
 
 ### `npm start`
