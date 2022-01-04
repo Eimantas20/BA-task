@@ -8,7 +8,7 @@ const TopBar =() => {
 
     useEffect(() => {
         document.addEventListener('keydown', handleSpaceClick);
-
+        
         return () => {
             document.removeEventListener('keydown', handleSpaceClick);
         };
