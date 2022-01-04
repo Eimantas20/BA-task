@@ -6,9 +6,9 @@ $clickToUnlock: 'Click to unlock';
 @mixin lock-image($img){
 	background-image: $img;
 	background-repeat: no-repeat;
-	position: absolute;
 	width: 13px;
 	height: 18px;
+	position: absolute;
 }
 
 @mixin lock-content($content) {
