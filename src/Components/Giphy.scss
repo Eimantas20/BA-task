@@ -1,0 +1,33 @@
+.catalogue {
+  box-sizing: border-box;
+  height:auto;
+  padding: 20px;
+  display: grid;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
+  justify-items: stretch;
+}
+
+.colorWhite {
+  color: #fff;
+}
+
+@media (max-width:1250px) and (min-width:901px) {
+  .catalogue {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width:900px) and (min-width:601px) {
+  .catalogue {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width:600px) {
+  .catalogue {
+    grid-template-columns: repeat(1, auto);
+  }
+}

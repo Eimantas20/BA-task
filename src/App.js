@@ -4,7 +4,6 @@ import Giphy from './Components/Giphy';
 import TopBar from './Components/TopBar';
 
 function App() {
-  console.log('app')
 
   return (
     <GiphyProvider>
