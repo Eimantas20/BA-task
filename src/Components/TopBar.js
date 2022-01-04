@@ -1,4 +1,4 @@
-import react, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { GiphysContext } from "../GiphyContext";
 import iImg from '../img/info.png';
 
@@ -7,7 +7,6 @@ const TopBar =() => {
     
     const fetchData = async () => {
         for (let i = 0; i < giphys.length; i++) {
-
             if(giphys[i].lockStatus === false) {
                 const res = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=xAkItQYl1IdMrDt3lG6wnTIpOl0SvegA`);
                 if (res.ok) {
@@ -19,12 +18,12 @@ const TopBar =() => {
                 }
             }
         }
-        
+
         // Have to pass down a full copy instead of shallow as otherwise react doesn't rerender - like there was no changes made to an object
         setGiphys([...giphys]);
     }
 
-    const handleSpace = (event) => {
+    const handleSpaceClick = (event) => {
         if (event.code === 'Space') {
             event.preventDefault();
             fetchData();
@@ -32,19 +31,19 @@ const TopBar =() => {
     }
 
     useEffect(() => {
-        document.addEventListener('keydown', handleSpace);
+        document.addEventListener('keydown', handleSpaceClick);
 
         return () => {
-            document.removeEventListener('keydown', handleSpace);
-    };
+            document.removeEventListener('keydown', handleSpaceClick);
+        };
     }, [giphys])
 
     return(
         <div className="topbar">
             <a href="#">TESTHY</a>
             <div className="topbar-right">
-                <img src={iImg} />
-                <p>Press <a>spacebar</a> to shuffle or</p>
+                <img alt="i" src={iImg} />
+                <p>Press <a href="#">spacebar</a> to shuffle or</p>
                 <button onClick={fetchData}>Click here</button>
             </div>
         </div>

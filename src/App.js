@@ -1,12 +1,10 @@
-import { useEffect } from 'react';
 import './App.scss';
 import { GiphyProvider } from './GiphyContext';
 import Giphy from './Components/Giphy';
 import TopBar from './Components/TopBar';
 
-
-
 function App() {
+  console.log('app')
 
   return (
     <GiphyProvider>
@@ -15,7 +13,6 @@ function App() {
         <Giphy />
       </div>
     </GiphyProvider>
- 
   );
 }
 

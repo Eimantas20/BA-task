@@ -1,25 +1,17 @@
 import { useContext } from "react";
-// import lock from '../img/lock.svg';
-// import openLock from '../img/open-lock.svg';
-
+import { addRemoveLocalStorage, toggleLock } from "./lockMethods";
 import { GiphysContext } from "../GiphyContext";
 
 const GiphyCard = (props) => {
 
     const [ giphys, setGiphys ] = useContext(GiphysContext);
-
+    const id = props.giphy.data.id;
 
     const lockGif = () => {
-        const id = props.giphy.data.id;
-        let savedGiphys = JSON.parse(localStorage.getItem('savedGiphys')) || [];
-        let localStorageIndex = savedGiphys.findIndex((giphy) => giphy === id);
+        addRemoveLocalStorage(id, 'savedGiphys');
 
-        localStorageIndex > -1 ? savedGiphys.splice(localStorageIndex, 1) : savedGiphys.push(id);
+        toggleLock(giphys, id);
 
-        localStorage.setItem('savedGiphys', JSON.stringify(savedGiphys));
-
-        const giphysIndex = giphys.findIndex(giphy => giphy.data.id === id);
-        giphys[giphysIndex].lockStatus = !giphys[giphysIndex].lockStatus;
         setGiphys([...giphys]);
     }
 
