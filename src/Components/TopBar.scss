@@ -28,7 +28,7 @@ $primary-color: #4327f5;
       height: 18px;
       color: #636465;
     }
-    
+
     img, p {
       margin-right: 5px
     }
@@ -49,6 +49,10 @@ $primary-color: #4327f5;
   border-color: $primary-color;
   border: none;
   transition: 0.1s all;
+}
+
+.blueBtn:hover {
+  cursor: pointer;
 }
 
 .blueBtn:active {

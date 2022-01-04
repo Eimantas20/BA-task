@@ -30,7 +30,9 @@ $open-lock-img: url(../img/open-lock.svg);
 	height:260px;
 	padding: 10px;
 	position: relative;
-	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 	display: flex;
 	align-items: flex-end;
 }
@@ -52,7 +54,7 @@ $open-lock-img: url(../img/open-lock.svg);
 	}
 
 	::after {
-		@include lock-content('Clock to unlock');
+		@include lock-content('Click to unlock');
 	}
 }
 
@@ -62,7 +64,7 @@ $open-lock-img: url(../img/open-lock.svg);
 	}
 
 	::after {
-		@include lock-content('Clock to lock');
+		@include lock-content('Click to lock');
 	}
 }
 
@@ -73,7 +75,7 @@ $open-lock-img: url(../img/open-lock.svg);
 		}
 
 		::after {
-			@include lock-content('Clock to lock');
+			@include lock-content('Click to lock');
 		}
 	}
 
@@ -83,7 +85,7 @@ $open-lock-img: url(../img/open-lock.svg);
 		}
 
 		::after {
-			@include lock-content('Clock to unlock');
+			@include lock-content('Click to unlock');
 		}
 	}
 }
