@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import './GiphyCard.scss';
 import { addRemoveLocalStorage, toggleLock } from "./lockMethods";
 import { GiphysContext } from "../GiphyContext";
 
@@ -19,11 +20,9 @@ const GiphyCard = (props) => {
         <div className="wrapper">
             <img src={props.giphy.data.images.downsized.url} alt='Giphy' />
             <div onClick={lockGif} className={`card-container ${props.giphy.lockStatus ? 'locked' : 'unlocked' }`}>
-                <div className="img">
-                </div>
+                <div className="lock-image" />
             </div>
         </div>
-
     )
 }
 

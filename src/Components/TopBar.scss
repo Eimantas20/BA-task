@@ -1,0 +1,85 @@
+$primary-color: #4327f5;
+$MobileShuffle: 'To shuffle:';
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  height: 40px;
+  font-family: 'Rubik-regular', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #636465;
+
+  .logo {
+    font-family: 'Gotham Ultra', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 18px;
+      height: 18px;
+      color: #636465;
+    }
+
+    img, p {
+      margin-right: 5px
+    }
+
+    span {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}
+
+.blueBtn {
+  height: 30px;
+  width: 88px;
+  color: #fff;
+  background-color: $primary-color;
+  border-radius: 4px;
+  border-color: $primary-color;
+  border: none;
+  transition: 0.1s all;
+}
+
+.blueBtn:hover {
+  cursor: pointer;
+}
+
+.blueBtn:active {
+  transform: scale(0.98);
+  -webkit-box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
+  -moz-box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
+  box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
+}
+
+@media screen and (max-width:600px) {
+  .blueBtn {
+    position: relative;
+    margin-left: 70px;
+  }
+
+  .topbar-right {
+    p {
+      display: none;
+    }
+
+    .blueBtn::before {
+      content: $MobileShuffle;
+      position: absolute;
+      left: -67px;
+    }
+  }
+}

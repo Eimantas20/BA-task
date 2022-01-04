@@ -1,9 +1,18 @@
 import { useContext, useEffect } from "react";
+import './TopBar.scss';
 import { GiphysContext } from "../GiphyContext";
-import iImg from '../img/info.png';
+import iImg from '../img/info.svg';
 
 const TopBar =() => {
     const [ giphys, setGiphys ] = useContext(GiphysContext);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleSpaceClick);
+        
+        return () => {
+            document.removeEventListener('keydown', handleSpaceClick);
+        };
+    }, [giphys])
     
     const fetchData = async () => {
         for (let i = 0; i < giphys.length; i++) {
@@ -18,7 +27,6 @@ const TopBar =() => {
                 }
             }
         }
-
         // Have to pass down a full copy instead of shallow as otherwise react doesn't rerender - like there was no changes made to an object
         setGiphys([...giphys]);
     }
@@ -30,21 +38,13 @@ const TopBar =() => {
         }
     }
 
-    useEffect(() => {
-        document.addEventListener('keydown', handleSpaceClick);
-
-        return () => {
-            document.removeEventListener('keydown', handleSpaceClick);
-        };
-    }, [giphys])
-
     return(
         <div className="topbar">
-            <a href="#">TESTHY</a>
+            <a className="logo" href="#">TESTHY</a>
             <div className="topbar-right">
-                <img alt="i" src={iImg} />
-                <p>Press <a href="#">spacebar</a> to shuffle or</p>
-                <button onClick={fetchData}>Click here</button>
+                <img alt="Info" src={iImg} />
+                <p>Press <span>spacebar</span> to shuffle or</p>
+                <button className="blueBtn" onClick={fetchData}>Click here</button>
             </div>
         </div>
     )

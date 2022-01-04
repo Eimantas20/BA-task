@@ -37,9 +37,9 @@ export const GiphyProvider = (props) => {
         }
 
         giphysArray.sort((a, b) => {
-
             return a.data.import_datetime.replace(/[- :]+/g, '') - b.data.import_datetime.replace(/[- :]+/g, '');
         });
+        
         setGiphys(giphysArray);
     }
 

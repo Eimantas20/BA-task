@@ -1,4 +1,5 @@
 import GiphyCard from "./GiphyCard";
+import './Giphy.scss';
 import { useContext } from "react";
 import { GiphysContext } from "../GiphyContext";
 
@@ -11,7 +12,7 @@ const Giphy = () => {
                 ? giphys.map((giphy, i) => (
                     <GiphyCard key={i} giphy={giphy} />
                     ))
-                : <h1>Loading...</h1>
+                : <h1 className="colorWhite">Loading...</h1>
             }
         </div>
     )

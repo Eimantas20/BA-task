@@ -1,0 +1,102 @@
+$lock-img: url(../img/lock.svg);
+$open-lock-img: url(../img/open-lock.svg);
+$clickToLock: 'Click to lock';
+$clickToUnlock: 'Click to unlock';
+
+@mixin lock-image($img){
+	background-image: $img;
+	background-repeat: no-repeat;
+	width: 13px;
+	height: 18px;
+	position: absolute;
+}
+
+@mixin lock-content($content) {
+	content: $content;
+	position: absolute;
+	color: #fff;
+	left: 30px;
+	width: max-content;
+}
+
+.wrapper {
+	position: relative;
+	-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+}
+
+.card-container {
+	height:260px;
+	padding: 10px;
+	position: relative;
+	-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+	display: flex;
+	align-items: flex-end;
+	background-color: rgba(green, 0.5)
+}
+
+.card-container:hover {
+	cursor: pointer;
+	-webkit-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+	-moz-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+	box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+}
+
+.card-container.locked {
+	.lock-image {
+		@include lock-image($lock-img);
+	}
+}
+
+.card-container.locked:hover {
+	.lock-image {
+		@include lock-image($open-lock-img);
+	}
+
+	::after {
+		@include lock-content($clickToUnlock);
+	}
+}
+
+.card-container.unlocked:hover {
+	.lock-image {
+		@include lock-image($lock-img);
+	}
+
+	::after {
+		@include lock-content($clickToLock);
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.card-container.unlocked {
+		.lock-image {
+			@include lock-image($lock-img);
+		}
+
+		::after {
+			@include lock-content($clickToLock);
+		}
+	}
+
+	.card-container.locked {
+		.lock-image {
+			@include lock-image($open-lock-img);
+		}
+
+		::after {
+			@include lock-content($clickToUnlock);
+		}
+	}
+}
