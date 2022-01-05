@@ -1,4 +1,4 @@
-export const addRemoveLocalStorage = (id, name) => {
+export const modifyLocalStorage = (id, name) => {
     let savedLocalItems = JSON.parse(localStorage.getItem(name)) || [];
     let matchingIndex = savedLocalItems.findIndex((giphy) => giphy === id);
 
@@ -12,4 +12,4 @@ export const toggleLock = (giphys, id) => {
     const giphysIndex = giphys.findIndex(giphy => giphy.data.id === id);
 
     return giphys[giphysIndex].lockStatus = !giphys[giphysIndex].lockStatus;
-}
+}   

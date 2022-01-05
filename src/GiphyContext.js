@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import getGiphyApiUrl from "./getGiphyApiUrl";
 
 export const GiphysContext = createContext();
 
@@ -13,8 +14,9 @@ export const GiphyProvider = (props) => {
         const giphysArray = [];
 
         //Fetch new items
+        let url = getGiphyApiUrl('random')
         for (let i = 0; i < extraGiphysCount; i++) {
-            const res = await fetch('https://api.giphy.com/v1/gifs/random?api_key=xAkItQYl1IdMrDt3lG6wnTIpOl0SvegA&tag=&rating=pg-13');
+            const res = await fetch(url);
             if (res.ok) {
                 let json = await res.json();
                 json.lockStatus = false;
@@ -26,7 +28,8 @@ export const GiphyProvider = (props) => {
 
         //Fetch items saved in localStorage
         for (let i = 0; i < savedGiphys.length; i++) {
-            const res = await fetch(`https://api.giphy.com/v1/gifs/${savedGiphys[i]}?api_key=xAkItQYl1IdMrDt3lG6wnTIpOl0SvegA`);
+            let url = getGiphyApiUrl(savedGiphys[i])
+            const res = await fetch(url);
             if (res.ok) { 
                 let json = await res.json();
                 json.lockStatus = true;
@@ -39,7 +42,7 @@ export const GiphyProvider = (props) => {
         giphysArray.sort((a, b) => {
             return a.data.import_datetime.replace(/[- :]+/g, '') - b.data.import_datetime.replace(/[- :]+/g, '');
         });
-        
+
         setGiphys(giphysArray);
     }
 
