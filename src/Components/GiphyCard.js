@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import './GiphyCard.scss';
-import { addRemoveLocalStorage, toggleLock } from "./lockMethods";
+import { modifyLocalStorage, toggleLock } from "./lockMethods";
 import { GiphysContext } from "../GiphyContext";
 
 const GiphyCard = (props) => {
@@ -9,7 +9,7 @@ const GiphyCard = (props) => {
     const id = props.giphy.data.id;
 
     const lockGif = () => {
-        addRemoveLocalStorage(id, 'savedGiphys');
+        modifyLocalStorage(id, 'savedGiphys');
 
         toggleLock(giphys, id);
 

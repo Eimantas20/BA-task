@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import './TopBar.scss';
 import { GiphysContext } from "../GiphyContext";
+import getGiphyApiUrl from "../getGiphyApiUrl";
 import iImg from '../img/info.svg';
 
 const TopBar =() => {
@@ -17,7 +18,8 @@ const TopBar =() => {
     const fetchData = async () => {
         for (let i = 0; i < giphys.length; i++) {
             if(giphys[i].lockStatus === false) {
-                const res = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=xAkItQYl1IdMrDt3lG6wnTIpOl0SvegA`);
+                let url = getGiphyApiUrl('random')
+                const res = await fetch(url);
                 if (res.ok) {
                     let json = await res.json();
                     json.lockStatus = false;

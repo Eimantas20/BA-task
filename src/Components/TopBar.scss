@@ -1,5 +1,4 @@
 $primary-color: #4327f5;
-$MobileShuffle: 'To shuffle:';
 
 .topbar {
   display: flex;
@@ -77,7 +76,7 @@ $MobileShuffle: 'To shuffle:';
     }
 
     .blueBtn::before {
-      content: $MobileShuffle;
+      content: 'To shuffle:';
       position: absolute;
       left: -67px;
     }
