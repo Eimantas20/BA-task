@@ -15,7 +15,7 @@ const TopBar =() => {
         };
     }, [giphys])
     
-    const fetchData = async () => {
+    const fetchUnsaved = async () => {
         for (let i = 0; i < giphys.length; i++) {
             if(giphys[i].lockStatus === false) {
                 let url = getGiphyApiUrl('random')
@@ -36,7 +36,7 @@ const TopBar =() => {
     const handleSpaceClick = (event) => {
         if (event.code === 'Space') {
             event.preventDefault();
-            fetchData();
+            fetchUnsaved();
         }
     }
 
@@ -46,7 +46,7 @@ const TopBar =() => {
             <div className="topbar-right">
                 <img alt="Info" src={iImg} />
                 <p>Press <span>spacebar</span> to shuffle or</p>
-                <button className="blueBtn" onClick={fetchData}>Click here</button>
+                <button className="blueBtn" onClick={fetchUnsaved}>Click here</button>
             </div>
         </div>
     )
