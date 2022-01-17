@@ -1,7 +1,7 @@
 import './App.scss';
-import { GiphyProvider } from './GiphyContext';
-import Giphy from './Components/Giphy';
-import TopBar from './Components/TopBar';
+import { GiphyProvider } from './Components/Hooks/GiphyContext';
+import Giphy from './Components/Giphy/Giphy';
+import TopBar from './Components/Giphy/TopBar/TopBar';
 
 function App() {
 

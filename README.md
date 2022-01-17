@@ -1,6 +1,10 @@
-## Available Scripts
+## ONLINE
 
 You may view the project online by clicking on the link [https://eimantas20.github.io/BA-task/](https://eimantas20.github.io/BA-task/).
+
+## Setup
+To run the app create a file .env.local with variable REACT_APP_GIPHY_API=YOUR_API_KEY
+Use your own api key for the value.
 
 ## Available Scripts
 
@@ -21,5 +25,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

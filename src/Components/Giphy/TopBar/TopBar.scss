@@ -1,13 +1,14 @@
 $primary-color: #4327f5;
+$box-shadow-button: rgba(19, 0, 87, 0.282) 3px 3px 6px 0px inset, rgba(10, 1, 90, 0.282) -3px -3px 6px 1px inset;
+$box-shadow-topbar: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+@use "../../../App" as support;
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  @include support.prefix(box-shadow, $box-shadow-topbar, webkit moz);
   height: 40px;
   font-family: 'Rubik-regular', Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -51,34 +52,32 @@ $primary-color: #4327f5;
   border-color: $primary-color;
   border: none;
   transition: 0.1s all;
-}
 
-.blueBtn:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+  }
 
-.blueBtn:active {
-  transform: scale(0.98);
-  -webkit-box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
-  -moz-box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
-  box-shadow: rgba(201, 201, 201, 0.282) 3px 3px 6px 0px inset, rgba(201, 201, 201, 0.282) -3px -3px 6px 1px inset;
+  &:active {
+    transform: translateY(1px);
+    @include support.prefix(box-shadow, $box-shadow-button, webkit moz);
+  }
 }
 
 @media screen and (max-width:600px) {
-  .blueBtn {
-    position: relative;
-    margin-left: 70px;
-  }
-
   .topbar-right {
     p {
       display: none;
     }
 
-    .blueBtn::before {
-      content: 'To shuffle:';
-      position: absolute;
-      left: -67px;
+    .blueBtn {
+      position: relative;
+      margin-left: 70px;
+
+      &::before {
+        content: 'To shuffle:';
+        position: absolute;
+        left: -67px;
+      }
     }
   }
 }
