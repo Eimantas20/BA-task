@@ -8,8 +8,7 @@ export const modifyLocalStorage = (id, name) => {
     localStorage.setItem(name, JSON.stringify(savedLocalItems));
 }
 
-export const toggleLock = (giphys, id) => {
-    const giphysIndex = giphys.findIndex(giphy => giphy.data.id === id);
-
-    return giphys[giphysIndex].lockStatus = !giphys[giphysIndex].lockStatus;
+export const toggleLock = (temporeraly, id) => {
+    const giphysIndex = temporeraly.findIndex(giphy => giphy.data.id === id);
+    return temporeraly[giphysIndex].lockStatus = !temporeraly[giphysIndex].lockStatus;
 }   

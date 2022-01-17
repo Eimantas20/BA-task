@@ -1,7 +1,8 @@
+// @use "TopBar/TopBar";
+@use "../../App" as support;
+
 .catalogue {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  @include support.prefix(box-sizing, border-box, webkit moz);
   height:auto;
   padding: 20px;
   display: grid;

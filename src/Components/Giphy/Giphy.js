@@ -1,7 +1,7 @@
 import GiphyCard from "./GiphyCard";
 import './Giphy.scss';
 import { useContext } from "react";
-import { GiphysContext } from "../GiphyContext";
+import { GiphysContext } from "../Hooks/GiphyContext";
 
 const Giphy = () => {
     const [ giphys ]  = useContext(GiphysContext);

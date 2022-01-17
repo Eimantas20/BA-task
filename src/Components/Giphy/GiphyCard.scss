@@ -1,5 +1,5 @@
-$lock-img: url(../img/lock.svg);
-$open-lock-img: url(../img/open-lock.svg);
+$lock-img: url(../../img/lock.svg);
+$open-lock-img: url(../../img/open-lock.svg);
 $clickToLock: 'Click to lock';
 $clickToUnlock: 'Click to unlock';
 
@@ -43,28 +43,29 @@ $clickToUnlock: 'Click to unlock';
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
-}
 
-.card-container:hover {
-  cursor: pointer;
-  -webkit-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
-  -moz-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
-  box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+  &:hover {
+    cursor: pointer;
+    -webkit-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+    -moz-box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+    box-shadow: inset 0px 0px 0px 4px rgb(67, 39, 245);
+  }
 }
-
+//Styled card-container locked and unlocked separately, as otherwise it would require deeper nesting:
+//Harder to read and update style, more bandwidth usage
 .card-container.locked {
   .lock-image {
     @include lock-image($lock-img);
   }
-}
 
-.card-container.locked:hover {
-  .lock-image {
-    @include lock-image($open-lock-img);
-  }
+  &:hover {
+    .lock-image {
+      @include lock-image($open-lock-img);
+    }
 
-  ::after {
-    @include lock-content($clickToUnlock);
+    &::after {
+      @include lock-content($clickToUnlock);
+    }
   }
 }
 
@@ -73,7 +74,7 @@ $clickToUnlock: 'Click to unlock';
     @include lock-image($lock-img);
   }
 
-  ::after {
+  &::after {
     @include lock-content($clickToLock);
   }
 }
@@ -84,7 +85,7 @@ $clickToUnlock: 'Click to unlock';
       @include lock-image($lock-img);
     }
 
-    ::after {
+    &::after {
       @include lock-content($clickToLock);
     }
   }
@@ -94,7 +95,7 @@ $clickToUnlock: 'Click to unlock';
       @include lock-image($open-lock-img);
     }
 
-    ::after {
+    &::after {
       @include lock-content($clickToUnlock);
     }
   }

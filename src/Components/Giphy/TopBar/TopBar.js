@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import './TopBar.scss';
-import { GiphysContext } from "../GiphyContext";
-import getGiphyApiUrl from "../getGiphyApiUrl";
-import iImg from '../img/info.svg';
+import { GiphysContext } from "../../Hooks/GiphyContext";
+import getGiphyApiUrl from "../../Hooks/getGiphyApiUrl";
+import iImg from '../../../img/info.svg';
 
 const TopBar =() => {
     const [ giphys, setGiphys ] = useContext(GiphysContext);
@@ -16,21 +16,22 @@ const TopBar =() => {
     }, [giphys])
     
     const fetchUnsaved = async () => {
-        for (let i = 0; i < giphys.length; i++) {
-            if(giphys[i].lockStatus === false) {
+        const resetGiphys= [...giphys];
+        for (let i = 0; i < resetGiphys.length; i++) {
+            if (resetGiphys[i].lockStatus === false) {
                 let url = getGiphyApiUrl('random')
                 const res = await fetch(url);
                 if (res.ok) {
                     let json = await res.json();
                     json.lockStatus = false;
-                    giphys.splice(i, 1, json)
+                    resetGiphys.splice(i, 1, json)
                 } else {
                     console.log("HTTP-Error: " + res.status);
                 }
             }
         }
         // Have to pass down a full copy instead of shallow as otherwise react doesn't rerender - like there was no changes made to an object
-        setGiphys([...giphys]);
+        setGiphys(resetGiphys);
     }
 
     const handleSpaceClick = (event) => {
